@@ -20,12 +20,6 @@
 <body>
 <script>
 
-    // Global game parameters
-    const GRID_CIRCLE = 0.5; // circle size as a fraction of cell size
-    const GRID_COLS = 8; // number of game columns
-    const GRID_ROWS = 8; // number of game rows
-    const MARGIN = 0.05; // margin as a fraction of the shortest screen dimension
-    const DELAY_COMP = 0.3; // seconds for the computer to take its turn
 
     // Text colors
     const COLOR_BACKGROUND = "#FFFFFF";   //white
@@ -35,17 +29,26 @@
     const COLOR_FRAME_BUTT = "#DEB887";   //burlywood
     const COLOR_PLAY = "#0000FF";         //blue
     const COLOR_PLAY_DRK = "#000000";     //black         //the edge of the text
+    const COLOR_WIN = "#000000";          //black
     const COLOR_TIE = "#A9A9A9";          //darkgrey
     const COLOR_TIE_DRK = "#000000";      //black
-    const COLOR_WIN = "#000000";          //black
 
-    // Texts
+    // Game over texts
     const TEXT_COMP = "Noob: Computer";
     const TEXT_PLAY = "Congratulation, You";
     const TEXT_TIE = "DRAW";
     const TEXT_WIN = "Win!";
 
-    // Classes
+
+    // Global game parameters
+    const GRID_CIRCLE = 0.5; // circle size as a fraction of cell size
+    const GRID_COLS = 8; // number of columns on board
+    const GRID_ROWS = 8; // number of rows on board
+    const MARGIN = 0.05; // margin as a fraction of the shortest screen dimension
+    const DELAY_COMP = 0.3; // How long AI takes for it to make its move
+
+
+    // Cell class
     class Cell
     {
       constructor(left, top, w, h, row, col)
@@ -355,10 +358,10 @@
 
       // Array set up for options
       let options = [];
-      options[0] = []; // AI wins --highest priority
+      options[0] = []; // AI wins -- highest priority
       options[1] = []; // block the player from winning
       options[2] = []; // neutral moves
-      options[3] = []; // give away a win
+      options[3] = []; // give away a win -- worst situation for AI
 
       // loop through each column
       let cell;
