@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Connect Four</title>
+    <title>EECS 368: Connect Four</title>
     <style>
         body
         {
@@ -229,11 +229,11 @@
         if (gameOver)
         {
           newGame();
-          return;
+          return 0;
         }
         if (!playersTurn) //If it's AI's turn, player does nothing
         {
-            return;
+          return 0;
         }
         selectCell();
     }
@@ -246,10 +246,11 @@
         let cell, marginX, marginY;
 
         // portrait
-        if ((width - margin * 2) * GRID_ROWS / GRID_COLS < height - margin * 2) {
-            cell = (width - margin * 2) / GRID_COLS;
-            marginX = margin;
-            marginY = (height - cell * GRID_ROWS) / 2;
+        if ((width - margin * 2) * GRID_ROWS / GRID_COLS < height - margin * 2)
+        {
+          cell = (width - margin * 2) / GRID_COLS;
+          marginX = margin;
+          marginY = (height - cell * GRID_ROWS) / 2;
         }
         // landscape
         else
@@ -358,10 +359,10 @@
 
       // Array set up for options
       let options = [];
-      options[0] = []; // AI wins -- highest priority
+      options[0] = []; // highest priority: AI wins
       options[1] = []; // block the player from winning
       options[2] = []; // neutral moves
-      options[3] = []; // give away a win -- worst situation for AI
+      options[3] = []; // worst situation for AI: give away a win
 
       // loop through each column
       let cell;
